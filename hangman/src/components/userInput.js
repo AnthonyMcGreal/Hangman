@@ -1,18 +1,27 @@
 import React from 'react';
 
 const userInput = ({ userInput, setUserInput }) => {
-    return (
-        <div>
-            <form>
-                <label htmlFor="userGuess">Enter Letter</label>
-                <input id="userGuess" type="text"  ></input>
-                <button type="submit" onClick={(event) => {
-                    console.log(event.target)
-                    setUserInput(event.target.value)
-                }}>Submit</button>
-            </form>
-        </div>
-    );
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(userInput);
+    setUserInput((currentInput) => {
+      console.log(event.target.value);
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="userGuess">
+        Enter Letter
+        <input
+          id="userGuess"
+          type="text"
+          onChange={(event) => setUserInput(event.target.value)}
+        />
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+  );
 };
 
 export default userInput;

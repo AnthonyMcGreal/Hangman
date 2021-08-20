@@ -3,6 +3,7 @@ import HangmanPic from './components/hangman-pic';
 import Title from './components/Title';
 import UserInput from './components/userInput';
 import Word from './components/word';
+import Reset from './components/Reset';
 import { useState } from 'react';
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
         wordInUse={wordInUse}
         setHangmanCounter={setHangmanCounter}
       />
+      <br></br>
+      <Reset />
     </div>
   );
 }

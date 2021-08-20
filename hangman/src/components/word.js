@@ -38,4 +38,12 @@ const Word = ({
 
 export default Word;
 
-const hiddenWords = ['northcoders', 'function', 'react', 'express', 'babel'];
+const hiddenWords = [
+  'northcoders',
+  'function',
+  'react',
+  'express',
+  'babel',
+  'javascript',
+  'array',
+];

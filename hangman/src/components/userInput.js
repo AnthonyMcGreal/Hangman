@@ -31,7 +31,7 @@ const UserInput = ({ setGuessedLetters, wordInUse, setHangmanCounter }) => {
           maxLength="1"
           value={currentLetter}
           onChange={(event) => {
-            setCurrentLetter(event.target.value);
+            setCurrentLetter(event.target.value.toLowerCase());
           }}
         />
       </label>

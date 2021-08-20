@@ -1,22 +1,38 @@
 import React from 'react';
+import { useState } from 'react';
 
-const userInput = ({ userInput, setUserInput }) => {
+const UserInput = ({ setGuessedLetters, wordInUse, setHangmanCounter }) => {
+  const [currentLetter, setCurrentLetter] = useState('');
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(userInput);
-    setUserInput((currentInput) => {
-      console.log(event.target.value);
+    setGuessedLetters((currentArray) => {
+      const newArray = [...currentArray];
+      newArray.push(currentLetter);
+      return newArray;
     });
+    if (!wordInUse.includes(currentLetter)) {
+      setHangmanCounter((currentCounter) => {
+        let newCounter = currentCounter;
+        newCounter++;
+        return newCounter;
+      });
+    }
+    setCurrentLetter('');
   };
-
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} id="guessInput">
       <label htmlFor="userGuess">
         Enter Letter
         <input
           id="userGuess"
           type="text"
-          onChange={(event) => setUserInput(event.target.value)}
+          required
+          maxLength="1"
+          value={currentLetter}
+          onChange={(event) => {
+            setCurrentLetter(event.target.value);
+          }}
         />
       </label>
       <button type="submit">Submit</button>
@@ -24,4 +40,4 @@ const userInput = ({ userInput, setUserInput }) => {
   );
 };
 
-export default userInput;
+export default UserInput;

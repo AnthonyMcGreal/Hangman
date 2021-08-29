@@ -30,7 +30,7 @@ function App() {
       <div>
         <Switch>
           <Route exact path="/">
-            <Home setCategory={setCategory} />
+            <Home setCategory={setCategory} category={category} />
           </Route>
           <Route exact path="/game">
             <Title />

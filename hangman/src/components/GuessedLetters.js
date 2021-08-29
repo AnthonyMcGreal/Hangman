@@ -1,7 +1,7 @@
 const GuessedLetters = (rejectedLetters) => {
   return (
     <div>
-      <p>[{rejectedLetters.rejectedLetters}]</p>
+      <p>Letters you have tried:[{rejectedLetters.rejectedLetters}]</p>
     </div>
   );
 };

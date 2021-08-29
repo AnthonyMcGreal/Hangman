@@ -35,6 +35,7 @@ const Word = ({
   return (
     <div>
       <p>{displayedWord}</p>
+      <p>Chosen category:{category}</p>
       <button
         onClick={() => {
           setWordInUse(() => {

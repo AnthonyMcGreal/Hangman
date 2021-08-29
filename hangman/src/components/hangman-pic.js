@@ -29,7 +29,6 @@ const hangmanPic = ({ hangmanCounter }) => {
   if (hangmanCounter === 10) {
     return <Redirect to="/lose" />;
   }
-  console.log(hangmanCounter);
   return (
     <div id="picture">
       <p>

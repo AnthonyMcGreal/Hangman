@@ -27,7 +27,7 @@ const hangmanPic = ({ hangmanCounter }) => {
   return (
     <div id="picture">
       <p>
-        <img src={pictureArray[hangmanCounter]} />
+        <img src={pictureArray[hangmanCounter]} alt="hangman" />
       </p>
     </div>
   );

@@ -1,10 +1,10 @@
-import React from 'react';
-
 const Word = ({ guessedLetters, wordInUse, setWordInUse }) => {
-  setWordInUse(() => {
-    const randomNum = Math.floor(Math.random() * 5);
-    return hiddenWords[randomNum];
-  });
+  if (wordInUse === '_') {
+    setWordInUse(() => {
+      const randomNum = Math.floor(Math.random() * 5);
+      return hiddenWords[randomNum];
+    });
+  }
   let displayedWord = wordInUse
     .split('')
     .map((letter) => {

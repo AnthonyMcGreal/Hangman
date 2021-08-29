@@ -40,7 +40,12 @@ function App() {
             />
             <GuessedLetters rejectedLetters={rejectedLetters} />
             <br></br>
-            <Reset />
+            <Reset
+              setGuessedLetters={setGuessedLetters}
+              setHangmanCounter={setHangmanCounter}
+              setRejectedLetters={setRejectedLetters}
+              setWordInUse={setWordInUse}
+            />
           </Route>
         </Switch>
       </div>

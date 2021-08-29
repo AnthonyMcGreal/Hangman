@@ -1,7 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
 
-const UserInput = ({ setGuessedLetters, wordInUse, setHangmanCounter }) => {
+const UserInput = ({
+  setGuessedLetters,
+  wordInUse,
+  setHangmanCounter,
+  setRejectedLetters,
+  rejectedLetters,
+}) => {
   const [currentLetter, setCurrentLetter] = useState('');
 
   const handleSubmit = (event) => {
@@ -17,13 +23,20 @@ const UserInput = ({ setGuessedLetters, wordInUse, setHangmanCounter }) => {
         newCounter++;
         return newCounter;
       });
+      setRejectedLetters((currentLetters) => {
+        const newArray = [...currentLetters];
+        newArray.push(currentLetter);
+        return newArray.sort();
+      });
     }
     setCurrentLetter('');
   };
 
   const validateInput = (value) => {
     if (/[a-z]/i.test(value)) {
-      setCurrentLetter(value);
+      if (!rejectedLetters.includes(value)) {
+        setCurrentLetter(value);
+      }
     } else {
       setCurrentLetter('');
     }
@@ -38,10 +51,8 @@ const UserInput = ({ setGuessedLetters, wordInUse, setHangmanCounter }) => {
           required
           maxLength="1"
           value={currentLetter}
-          onkeypress="return /[a-z]/i.test(event.key)"
           onChange={(event) => {
-            validateInput(event.target.value);
-            // setCurrentLetter(event.target.value.toLowerCase());
+            validateInput(event.target.value.toLowerCase());
           }}
         />
       </label>

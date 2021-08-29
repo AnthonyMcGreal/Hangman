@@ -1,11 +1,10 @@
 import React from 'react';
 
-const Word = ({
-  guessedLetters,
-  wordInUse,
-  setWordInUse,
-  setGuessedLetters,
-}) => {
+const Word = ({ guessedLetters, wordInUse, setWordInUse }) => {
+  setWordInUse(() => {
+    const randomNum = Math.floor(Math.random() * 5);
+    return hiddenWords[randomNum];
+  });
   let displayedWord = wordInUse
     .split('')
     .map((letter) => {
@@ -24,7 +23,7 @@ const Word = ({
       <p>{displayedWord}</p>
       <button
         onClick={() => {
-          setWordInUse((currentWord) => {
+          setWordInUse(() => {
             const randomNum = Math.floor(Math.random() * 5);
             return hiddenWords[randomNum];
           });

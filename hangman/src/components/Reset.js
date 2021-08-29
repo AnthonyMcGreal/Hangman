@@ -1,13 +1,11 @@
+import { Link } from 'react-router-dom';
+
 const Reset = () => {
   return (
     <div>
-      <button
-        onClick={() => {
-          window.location.reload();
-        }}
-      >
-        Play a new game
-      </button>
+      <Link to="/">
+        <p>Play a new game</p>
+      </Link>
     </div>
   );
 };

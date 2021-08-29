@@ -7,7 +7,6 @@ const Reset = ({
   setWordInUse,
 }) => {
   function reset() {
-    console.log('reset here');
     setGuessedLetters([]);
     setHangmanCounter(0);
     setRejectedLetters([]);

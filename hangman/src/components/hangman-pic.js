@@ -9,6 +9,8 @@ import six from './hangmanPics/6.png';
 import seven from './hangmanPics/7.png';
 import eight from './hangmanPics/8.png';
 import nine from './hangmanPics/9.png';
+import ten from './hangmanPics/10.png';
+import { Redirect } from 'react-router-dom';
 
 const hangmanPic = ({ hangmanCounter }) => {
   const pictureArray = [
@@ -22,8 +24,12 @@ const hangmanPic = ({ hangmanCounter }) => {
     seven,
     eight,
     nine,
+    ten,
   ];
-
+  if (hangmanCounter === 10) {
+    return <Redirect to="/lose" />;
+  }
+  console.log(hangmanCounter);
   return (
     <div id="picture">
       <p>

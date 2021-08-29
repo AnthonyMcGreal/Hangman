@@ -1,8 +1,21 @@
-const Word = ({ guessedLetters, wordInUse, setWordInUse }) => {
+import { Redirect } from 'react-router-dom';
+// import { useState } from 'react';
+
+const Word = ({
+  guessedLetters,
+  wordInUse,
+  setWordInUse,
+  category,
+  setRejectedLetters,
+  setGuessedLetters,
+  setHangmanCounter,
+}) => {
   if (wordInUse === '_') {
     setWordInUse(() => {
-      const randomNum = Math.floor(Math.random() * 5);
-      return hiddenWords[randomNum];
+      const randomNum = Math.floor(
+        Math.random() * hiddenWords[category].length
+      );
+      return hiddenWords[category][randomNum];
     });
   }
   let displayedWord = wordInUse
@@ -17,6 +30,7 @@ const Word = ({ guessedLetters, wordInUse, setWordInUse }) => {
     .join(' ');
   if (!displayedWord.includes('_')) {
     displayedWord = 'You Win!!';
+    return <Redirect to="/win" />;
   }
   return (
     <div>
@@ -24,12 +38,17 @@ const Word = ({ guessedLetters, wordInUse, setWordInUse }) => {
       <button
         onClick={() => {
           setWordInUse(() => {
-            const randomNum = Math.floor(Math.random() * 5);
-            return hiddenWords[randomNum];
+            const randomNum = Math.floor(
+              Math.random() * hiddenWords[category].length
+            );
+            return hiddenWords[category][randomNum];
           });
+          setGuessedLetters([]);
+          setRejectedLetters([]);
+          setHangmanCounter(0);
         }}
       >
-        Generate Word
+        Generate a new word
       </button>
     </div>
   );
@@ -37,12 +56,37 @@ const Word = ({ guessedLetters, wordInUse, setWordInUse }) => {
 
 export default Word;
 
-const hiddenWords = [
-  'northcoders',
-  'function',
-  'react',
-  'express',
-  'babel',
-  'javascript',
-  'array',
-];
+const hiddenWords = {
+  Mountains: [
+    'everest',
+    'elbrus',
+    'kilimanjaro',
+    'blanc',
+    'aconcagua',
+    'vesuvius',
+  ],
+  Rivers: [
+    'thames',
+    'nile',
+    'amazon',
+    'mississippi',
+    'yangtze',
+    'volga',
+    'danube',
+    'ganges',
+    'rhine',
+    'indus',
+  ],
+  Countries: [
+    'england',
+    'russia',
+    'india',
+    'china',
+    'peru',
+    'italy',
+    'lithuania',
+    'tanzania',
+    'greece',
+    'mexico',
+  ],
+};

@@ -6,6 +6,8 @@ import Word from './components/word';
 import Reset from './components/Reset';
 import GuessedLetters from './components/GuessedLetters';
 import Home from './components/Home';
+import Win from './components/Win';
+import Lose from './components/Lose';
 import { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
@@ -14,13 +16,14 @@ function App() {
   const [hangmanCounter, setHangmanCounter] = useState(0);
   const [wordInUse, setWordInUse] = useState('_');
   const [rejectedLetters, setRejectedLetters] = useState([]);
+  const [category, setCategory] = useState('_');
 
   return (
     <BrowserRouter>
       <div>
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home setCategory={setCategory} />
           </Route>
           <Route exact path="/game">
             <Title />
@@ -29,6 +32,9 @@ function App() {
               wordInUse={wordInUse}
               setWordInUse={setWordInUse}
               setGuessedLetters={setGuessedLetters}
+              category={category}
+              setRejectedLetters={setRejectedLetters}
+              setHangmanCounter={setHangmanCounter}
             />
             <HangmanPic hangmanCounter={hangmanCounter} />
             <UserInput
@@ -46,6 +52,12 @@ function App() {
               setRejectedLetters={setRejectedLetters}
               setWordInUse={setWordInUse}
             />
+          </Route>
+          <Route exact path="/win">
+            <Win />
+          </Route>
+          <Route exact path="/lose">
+            <Lose />
           </Route>
         </Switch>
       </div>

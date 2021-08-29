@@ -1,18 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const Reset = ({
-  setGuessedLetters,
-  setHangmanCounter,
-  setRejectedLetters,
-  setWordInUse,
-}) => {
-  function reset() {
-    setGuessedLetters([]);
-    setHangmanCounter(0);
-    setRejectedLetters([]);
-    setWordInUse('_');
-  }
-
+const Reset = ({ reset }) => {
   return (
     <div>
       <Link

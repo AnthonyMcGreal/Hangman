@@ -18,6 +18,13 @@ function App() {
   const [rejectedLetters, setRejectedLetters] = useState([]);
   const [category, setCategory] = useState('_');
 
+  function reset() {
+    setGuessedLetters([]);
+    setHangmanCounter(0);
+    setRejectedLetters([]);
+    setWordInUse('_');
+  }
+
   return (
     <BrowserRouter>
       <div>
@@ -51,13 +58,14 @@ function App() {
               setHangmanCounter={setHangmanCounter}
               setRejectedLetters={setRejectedLetters}
               setWordInUse={setWordInUse}
+              reset={reset}
             />
           </Route>
           <Route exact path="/win">
-            <Win />
+            <Win reset={reset} />
           </Route>
           <Route exact path="/lose">
-            <Lose />
+            <Lose reset={reset} />
           </Route>
         </Switch>
       </div>

@@ -20,6 +20,14 @@ const UserInput = ({ setGuessedLetters, wordInUse, setHangmanCounter }) => {
     }
     setCurrentLetter('');
   };
+
+  const validateInput = (value) => {
+    if (/[a-z]/i.test(value)) {
+      setCurrentLetter(value);
+    } else {
+      setCurrentLetter('');
+    }
+  };
   return (
     <form onSubmit={handleSubmit} id="guessInput">
       <label htmlFor="userGuess">
@@ -30,8 +38,10 @@ const UserInput = ({ setGuessedLetters, wordInUse, setHangmanCounter }) => {
           required
           maxLength="1"
           value={currentLetter}
+          onkeypress="return /[a-z]/i.test(event.key)"
           onChange={(event) => {
-            setCurrentLetter(event.target.value.toLowerCase());
+            validateInput(event.target.value);
+            // setCurrentLetter(event.target.value.toLowerCase());
           }}
         />
       </label>

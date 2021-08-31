@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const Reset = ({ reset }) => {
   return (
-    <div>
+    <div id="reset">
       <Link
         to="/"
         onClick={() => {

@@ -52,7 +52,6 @@ function App() {
               rejectedLetters={rejectedLetters}
             />
             <GuessedLetters rejectedLetters={rejectedLetters} />
-            <br></br>
             <Reset
               setGuessedLetters={setGuessedLetters}
               setHangmanCounter={setHangmanCounter}

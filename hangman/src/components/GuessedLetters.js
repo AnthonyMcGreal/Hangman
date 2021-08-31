@@ -1,6 +1,6 @@
 const GuessedLetters = (rejectedLetters) => {
   return (
-    <div>
+    <div id="guessedLetters">
       <p>Letters you have tried:[{rejectedLetters.rejectedLetters}]</p>
     </div>
   );

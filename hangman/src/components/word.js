@@ -1,5 +1,5 @@
 import { Redirect } from 'react-router-dom';
-// import { useState } from 'react';
+import { useEffect } from 'react';
 
 const Word = ({
   guessedLetters,
@@ -10,14 +10,16 @@ const Word = ({
   setGuessedLetters,
   setHangmanCounter,
 }) => {
-  if (wordInUse === '_') {
-    setWordInUse(() => {
-      const randomNum = Math.floor(
-        Math.random() * hiddenWords[category].length
-      );
-      return hiddenWords[category][randomNum];
-    });
-  }
+  useEffect(() => {
+    if (wordInUse === '_') {
+      setWordInUse(() => {
+        const randomNum = Math.floor(
+          Math.random() * hiddenWords[category].length || 1
+        );
+        return hiddenWords[category][randomNum];
+      });
+    }
+  }, [category, setWordInUse, wordInUse]);
   let displayedWord = wordInUse
     .split('')
     .map((letter) => {
@@ -33,7 +35,7 @@ const Word = ({
     return <Redirect to="/win" />;
   }
   return (
-    <div>
+    <div id="word">
       <p>{displayedWord}</p>
       <p>Chosen category:{category}</p>
       <button

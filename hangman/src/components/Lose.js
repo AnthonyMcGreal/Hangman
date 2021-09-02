@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 
-const Lose = ({ reset }) => {
+const Lose = ({ reset, wordInUse, category }) => {
   return (
     <div>
-      You Lose!!
+      You Lose!! <br></br>The {word[category]} was {wordInUse}
       <Link
         to="/"
         onClick={() => {
@@ -17,3 +17,9 @@ const Lose = ({ reset }) => {
 };
 
 export default Lose;
+
+const word = {
+  Countries: 'country',
+  Rivers: 'river',
+  Mountains: 'mountain',
+};

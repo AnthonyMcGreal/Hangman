@@ -27,7 +27,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div>
+      <div id="app">
         <Switch>
           <Route exact path="/">
             <Home setCategory={setCategory} category={category} />
@@ -64,7 +64,7 @@ function App() {
             <Win reset={reset} />
           </Route>
           <Route exact path="/lose">
-            <Lose reset={reset} />
+            <Lose reset={reset} wordInUse={wordInUse} category={category} />
           </Route>
         </Switch>
       </div>

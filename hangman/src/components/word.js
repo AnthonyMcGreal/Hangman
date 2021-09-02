@@ -11,15 +11,20 @@ const Word = ({
   setHangmanCounter,
 }) => {
   useEffect(() => {
-    if (wordInUse === '_') {
+    if (wordInUse === '_' && category !== '_') {
       setWordInUse(() => {
         const randomNum = Math.floor(
-          Math.random() * hiddenWords[category].length || 1
+          Math.random() * hiddenWords[category].length
         );
         return hiddenWords[category][randomNum];
       });
     }
   }, [category, setWordInUse, wordInUse]);
+
+  if (wordInUse === undefined) {
+    return <Redirect to="/home" />;
+  }
+
   let displayedWord = wordInUse
     .split('')
     .map((letter) => {
@@ -34,6 +39,8 @@ const Word = ({
     displayedWord = 'You Win!!';
     return <Redirect to="/win" />;
   }
+
+  if (hiddenWords[category] === undefined) return <Redirect to="/" />;
   return (
     <div id="word">
       <p>{displayedWord}</p>

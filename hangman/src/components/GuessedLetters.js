@@ -1,7 +1,8 @@
 const GuessedLetters = (rejectedLetters) => {
   return (
     <div id="guessedLetters">
-      <p>Letters you have tried:[{rejectedLetters.rejectedLetters}]</p>
+      <p>Letters you have tried: </p>
+      <p>[{rejectedLetters.rejectedLetters}]</p>
     </div>
   );
 };

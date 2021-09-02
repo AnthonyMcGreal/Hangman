@@ -50,6 +50,8 @@ const UserInput = ({
           type="text"
           required
           maxLength="1"
+          autoComplete="off"
+          size="4"
           value={currentLetter}
           onChange={(event) => {
             validateInput(event.target.value.toLowerCase());

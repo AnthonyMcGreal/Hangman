@@ -1,16 +1,16 @@
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const Reset = ({ reset }) => {
+  const history = useHistory();
+
+  function resetAndRedirect() {
+    reset();
+    history.push('/');
+  }
+
   return (
     <div id="reset">
-      <Link
-        to="/"
-        onClick={() => {
-          reset();
-        }}
-      >
-        <p>Play a new game</p>
-      </Link>
+      <button onClick={() => resetAndRedirect()}>Play a new game</button>
     </div>
   );
 };

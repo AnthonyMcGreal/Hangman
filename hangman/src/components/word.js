@@ -43,7 +43,7 @@ const Word = ({
   if (hiddenWords[category] === undefined) return <Redirect to="/" />;
   return (
     <div id="word">
-      <p>{displayedWord}</p>
+      <p id="hiddenWord">{displayedWord}</p>
       <p>Chosen category:{category}</p>
       <button
         onClick={() => {

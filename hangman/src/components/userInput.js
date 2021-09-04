@@ -44,7 +44,7 @@ const UserInput = ({
   return (
     <form onSubmit={handleSubmit} id="guessInput">
       <label htmlFor="userGuess">
-        Enter Letter
+        Enter Letter:
         <input
           id="userGuess"
           type="text"

@@ -1,17 +1,22 @@
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const Lose = ({ reset, wordInUse, category }) => {
+  const history = useHistory();
+
+  function resetAndRedirect() {
+    reset();
+    history.push('/');
+  }
   return (
-    <div>
-      You Lose!! <br></br>The {word[category]} was {wordInUse}
-      <Link
-        to="/"
-        onClick={() => {
-          reset();
-        }}
-      >
-        <p>Play a new game</p>
-      </Link>
+    <div id="lose">
+      <p>You killed him!!</p>
+      <p>
+        The {word[category]}
+        {wordInUse[0].toUpperCase() + wordInUse.slice(1)}
+      </p>
+      <div id="reset">
+        <button onClick={() => resetAndRedirect()}>Play a new game</button>
+      </div>
     </div>
   );
 };
@@ -19,7 +24,7 @@ const Lose = ({ reset, wordInUse, category }) => {
 export default Lose;
 
 const word = {
-  Countries: 'country',
-  Rivers: 'river',
-  Mountains: 'mountain',
+  Countries: 'country was ',
+  Rivers: 'river was the river ',
+  Mountains: 'mountain was Mt. ',
 };

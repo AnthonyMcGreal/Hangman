@@ -24,7 +24,7 @@
 
 #cats {
   position: relative;
-  width: 55%;
+  width: 50%;
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: space-evenly;

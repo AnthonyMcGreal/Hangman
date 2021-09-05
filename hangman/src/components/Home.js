@@ -1,9 +1,13 @@
 import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
 
 const Home = ({ setCategory, category }) => {
+  const [isCategory, setIsCategory] = useState(true);
+
   function setNewCategory(event) {
     let value = event.target.innerText;
     setCategory(value);
+    setIsCategory(false);
   }
 
   const history = useHistory();
@@ -13,7 +17,7 @@ const Home = ({ setCategory, category }) => {
   if (category === '_') {
     categoryLine = 'Pick a category';
   } else {
-    categoryLine = 'Chosen category:' + category;
+    categoryLine = 'Chosen category : ' + category;
   }
 
   return (
@@ -30,7 +34,11 @@ const Home = ({ setCategory, category }) => {
         <button id="cat-button" onClick={(event) => setNewCategory(event)}>
           Mountains
         </button>
-        <button id="playButton" onClick={() => history.push('/game')}>
+        <button
+          disabled={isCategory}
+          id="playButton"
+          onClick={() => history.push('/game')}
+        >
           Start a game
         </button>
       </section>

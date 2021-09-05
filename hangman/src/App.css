@@ -3,8 +3,7 @@
   width: 50vw;
   min-width: 350px;
   margin: auto;
-  height: 100vh;
-  overflow: hidden;
+  height: 59em;
   font-family: 'Fredoka One', cursive;
   background-color: rgb(140, 140, 140);
   border-radius: 10px;
@@ -25,7 +24,7 @@
 
 #cats {
   position: relative;
-  width: 50%;
+  width: 55%;
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -115,6 +114,7 @@
 
 #guessedLetters {
   height: 10%;
+  padding-top: 0.6em;
   font-size: 1.4em;
 }
 
@@ -167,25 +167,31 @@ textarea {
 }
 
 button:hover {
-  background-color: rgb(252, 83, 83);
+  background-color: rgb(186, 242, 239);
 }
 @media screen and (max-width: 480px) {
   #app {
     width: 100vw;
+    min-height: 41.7em;
   }
 
   #home h1 {
     font-size: 2em;
   }
 
+  #cats {
+    width: 75%;
+  }
+
   #cat-button {
     margin: 10px;
-    width: 10em;
+    width: 9em;
     height: 4em;
   }
 
   #playButton {
     margin: 10px;
+    width: 12em;
   }
 
   #title {
